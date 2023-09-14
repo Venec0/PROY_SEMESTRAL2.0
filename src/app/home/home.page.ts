@@ -7,10 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  showLoginForm = false;
 
   constructor() {}
 
-}
-export class LoginForm {
-  showLoginForm = false; // Inicialmente, el formulario no se muestra
 }

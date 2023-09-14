@@ -7,24 +7,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-text-center"> <!-- Añadimos la clase ion-text-center para centrar el contenido -->
-  <div class="ion-text-center"> <!-- Centramos el contenido verticalmente -->
+<ion-content>
+  <div class="ion-text-center">
     <h2>Elija su operación</h2>
-    <ion-button expand="full" color="primary">Iniciar sesión</ion-button>
-    <ion-button expand="full" color="secondary">Recuperar clave</ion-button>
-  </div ngIf="showLoginForm">
-  
-  <ion-card *ngIf="showLoginForm">
-    <ion-card-content>
-      <ion-item>
-        <ion-label position="floating">Correo electrónico/usuario</ion-label>
-        <ion-input type="text" [(ngModel)]="email"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
-      <ion-button expand="full" color="primary" (click)="login()">Iniciar sesión</ion-button>
-    </ion-card-content>
-  </ion-card>
+    <ion-button expand="full" class="ion-color-custom">Iniciar sesión</ion-button>
+    <ion-button expand="full" class="ion-color-custom">Recuperar clave</ion-button>
+  </div>
 </ion-content>
