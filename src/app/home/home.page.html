@@ -1,20 +1,30 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+<ion-header>
+  <ion-toolbar color = "dark">
     <ion-title>
-      Blank
+      <ion-img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img>
+      Bienvenido!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="ion-text-center"> <!-- Añadimos la clase ion-text-center para centrar el contenido -->
+  <div class="ion-text-center"> <!-- Centramos el contenido verticalmente -->
+    <h2>Elija su operación</h2>
+    <ion-button expand="full" color="primary">Iniciar sesión</ion-button>
+    <ion-button expand="full" color="secondary">Recuperar clave</ion-button>
+  </div ngIf="showLoginForm">
+  
+  <ion-card *ngIf="showLoginForm">
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Correo electrónico/usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
+      </ion-item>
+      <ion-button expand="full" color="primary" (click)="login()">Iniciar sesión</ion-button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
