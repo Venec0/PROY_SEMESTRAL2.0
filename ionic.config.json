@@ -1,0 +1,7 @@
+{
+  "name": "PROY_SEMESTRAL_APPS_MOV",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
