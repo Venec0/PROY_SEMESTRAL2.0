@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color = "dark">
+  <ion-toolbar color="dark">
     <ion-title>
       <ion-img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img>
       Bienvenido!
@@ -10,7 +10,14 @@
 <ion-content>
   <div class="ion-text-center">
     <h2>Elija su operación</h2>
-    <ion-button expand="full" class="ion-color-custom">Iniciar sesión</ion-button>
+    <ion-button expand="full" class="ion-color-custom" (click)="toggleLoginForm()">Iniciar sesión</ion-button>
     <ion-button expand="full" class="ion-color-custom">Recuperar clave</ion-button>
+  </div>
+  
+  <!-- Formulario de inicio de sesión con clase CSS para animación -->
+  <div class="login-form" [ngClass]="{'visible': showLoginForm}">
+    <ion-input id="inputEmail" placeholder="Correo electrónico o usuario"></ion-input>
+    <ion-input id="inputPassword" type="password" placeholder="Contraseña"></ion-input>    
+    <ion-button expand="full" class="ion-color-custom">Ingresar</ion-button>
   </div>
 </ion-content>
