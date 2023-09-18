@@ -1,6 +1,5 @@
 /* Estilo personalizado para los botones */
 .ion-color-custom {
-  background-color: #ff6600;
   color: rgb(255, 255, 255);
   margin-top: 20px; /* Agrega espacio desde la parte superior */
 }
@@ -11,18 +10,5 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 50vh; /* Ajusta la altura al 100% de la ventana para centrar verticalmente */
+  height: 70vh; /* Ajusta la altura al 100% de la ventana para centrar verticalmente */
 }
-
-/* Estilo para el formulario de inicio de sesión 
-.login-form {
-  opacity: 0;
-  transform: translateY(-20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.login-form.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-*/
