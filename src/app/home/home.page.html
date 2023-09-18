@@ -8,16 +8,29 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-text-center">
-    <h2>Elija su operación</h2>
-    <ion-button expand="full" class="ion-color-custom" (click)="toggleLoginForm()">Iniciar sesión</ion-button>
-    <ion-button expand="full" class="ion-color-custom">Recuperar clave</ion-button>
-  </div>
+  <div class = "ion-text-center">
+    <h2>Elija Su Operación:</h2>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item class="input-field">
+          <ion-label position="floating">Correo Electrónico</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
   
-  <!-- Formulario de inicio de sesión con clase CSS para animación -->
-  <div class="login-form" [ngClass]="{'visible': showLoginForm}">
-    <ion-input id="inputEmail" placeholder="Correo electrónico o usuario"></ion-input>
-    <ion-input id="inputPassword" type="password" placeholder="Contraseña"></ion-input>    
-    <ion-button expand="full" class="ion-color-custom">Ingresar</ion-button>
+        <ion-item class="input-field">
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>    
   </div>
 </ion-content>
+
+<ion-footer>
+  <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="login()">
+    Iniciar Sesión
+  </ion-button>
+  <ion-button expand="full" shape="round" class="login-button-two">
+    Recuperar clave
+  </ion-button>
+</ion-footer>

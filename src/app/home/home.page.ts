@@ -1,5 +1,6 @@
-import { Component, Renderer2, ViewChild, ElementRef } from '@angular/core';
-import { IonInput } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,27 +8,54 @@ import { IonInput } from '@ionic/angular';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  showLoginForm = false;
+  email: string = '';
+  password: string = '';
 
-  constructor(private renderer: Renderer2) {}
+  users = [
+    { email: 'usuario1@example.com', password: 'contraseña1', name: 'Nombre1' },
+    { email: 'usuario2@example.com', password: 'contraseña2', name: 'Nombre2' },
+  ];
 
-  toggleLoginForm() {
-    console.log("toggleLoginForm() called");
-    this.showLoginForm = !this.showLoginForm;
-    console.log("showLoginForm:", this.showLoginForm);
-    
-    if (this.showLoginForm) {
-      const inputEmail = this.renderer.selectRootElement('#inputEmail');
-      const inputPassword = this.renderer.selectRootElement('#inputPassword');
-      
-      this.renderer.setStyle(inputEmail, 'display', 'block');
-      this.renderer.setStyle(inputPassword, 'display', 'block');
+  constructor(
+    private alertController: AlertController,
+    private router: Router
+  ) {}
+
+  async login() {
+    const user = this.users.find((u) => u.email === this.email);
+
+    if (user && user.password === this.password) {
+      const welcomeMessage = `Bienvenido, ${user.name}!`;
+
+      // Muestra un alert con el mensaje de bienvenida
+      const alert = await this.alertController.create({
+        header: 'Inicio de sesión exitoso',
+        message: welcomeMessage,
+        buttons: [
+          {
+            text: 'OK',
+            handler: () => {
+              // Redirige al usuario a la página de "login" con un mensaje en la URL
+              this.router.navigate(['/login'], {
+                queryParams: { message: `Ingresado como ${user.name}` },
+              });
+            },
+          },
+        ],
+      });
+
+      await alert.present();
     } else {
-      const inputEmail = this.renderer.selectRootElement('#inputEmail');
-      const inputPassword = this.renderer.selectRootElement('#inputPassword');
-      
-      this.renderer.setStyle(inputEmail, 'display', 'none');
-      this.renderer.setStyle(inputPassword, 'display', 'none');
+      const errorMessage = 'Credenciales incorrectas';
+
+      // Muestra un alert con el mensaje de error
+      const alert = await this.alertController.create({
+        header: 'Error',
+        message: errorMessage,
+        buttons: ['OK'],
+      });
+
+      await alert.present();
     }
   }
 }
