@@ -1,14 +1,8 @@
-/* Estilo personalizado para los botones */
-.ion-color-custom {
-  color: rgb(255, 255, 255);
-  margin-top: 20px; /* Agrega espacio desde la parte superior */
-}
-
 /* Estilo para el contenido centrado verticalmente */
 .ion-text-center {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 70vh; /* Ajusta la altura al 100% de la ventana para centrar verticalmente */
+  height: 60vh; /* Ajusta la altura al 100% de la ventana para centrar verticalmente */
 }
