@@ -12,8 +12,8 @@ export class HomePage {
   password: string = '';
 
   users = [
-    { email: 'usuario1@example.com', password: 'contraseña1', name: 'Nombre1' },
-    { email: 'usuario2@example.com', password: 'contraseña2', name: 'Nombre2' },
+    { email: 'joe.medina@duocuc.cl', password: 'contraseña1', name: 'Joel Medina' },
+    { email: 'fab.aguila@duocuc.cl', password: 'contraseña2', name: 'Fabián Águila' },
   ];
 
   constructor(

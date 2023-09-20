@@ -14,6 +14,9 @@ export class LoginPage implements OnInit {
     { id: 2, codigo: '67890', qrCodeImage: 'assets/icon/qr-code.png' },
     { id: 3, codigo: '54321', qrCodeImage: 'assets/icon/qr-code.png' },
   ];
+  
+  mostrarBotonesFlag: boolean = false; // Variable para mostrar/ocultar los botones
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
