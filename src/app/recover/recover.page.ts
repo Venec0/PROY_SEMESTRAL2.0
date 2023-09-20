@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular'; // Importa el AlertController si deseas mostrar una alerta
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-recover',
@@ -8,6 +8,8 @@ import { AlertController } from '@ionic/angular'; // Importa el AlertController 
 })
 export class RecoverPage {
   email: string = '';
+  newPassword: string = ''; // Nueva contraseña
+  showNewPasswordInput: boolean = false; // Controla si se muestra el campo de nueva contraseña
 
   constructor(private alertController: AlertController) {}
 
@@ -18,12 +20,30 @@ export class RecoverPage {
       return;
     }
 
-    // Aquí puedes implementar la lógica para el restablecimiento de contraseña
-    // Por ejemplo, podrías enviar un correo electrónico al usuario con un enlace de restablecimiento de contraseña
-    // También puedes realizar una llamada a una API para manejar el restablecimiento de contraseña en el servidor
+    // Encuentra el usuario correspondiente al correo electrónico (asumiendo que tienes una lista de usuarios)
+    const user = this.findUserByEmail(this.email);
 
-    // Muestra una alerta para informar al usuario que se ha enviado un correo de restablecimiento
-    this.presentAlert('Correo enviado', 'Se ha enviado un correo de restablecimiento de contraseña a su dirección de correo electrónico.');
+    if (!user) {
+      this.presentAlert('Usuario no encontrado', 'No se encontró un usuario con el correo electrónico proporcionado.');
+      return;
+    }
+
+    if (this.showNewPasswordInput) {
+      // Aquí puedes implementar la lógica para cambiar la contraseña del usuario con la nueva contraseña
+      // Por ejemplo, puedes actualizar la contraseña en la lista de usuarios
+      user.password = this.newPassword;
+
+      // Muestra una alerta para informar al usuario que la contraseña se ha cambiado
+      this.presentAlert('Contraseña cambiada', 'Su contraseña ha sido cambiada con éxito.');
+
+      // Limpia los campos
+      this.email = '';
+      this.newPassword = '';
+      this.showNewPasswordInput = false;
+    } else {
+      // Muestra el campo de nueva contraseña para que el usuario ingrese su nueva contraseña
+      this.showNewPasswordInput = true;
+    }
   }
 
   private isValidEmail(email: string): boolean {
@@ -32,6 +52,12 @@ export class RecoverPage {
     // Este es un ejemplo simple, debes adaptarlo a tus necesidades
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     return emailRegex.test(email);
+  }
+
+  private findUserByEmail(email: string) {
+    // Busca un usuario en tu lista de usuarios por su correo electrónico
+    // Devuelve el usuario si se encuentra, de lo contrario, null
+    return this.users.find((u) => u.email === email);
   }
 
   async presentAlert(title: string, message: string) {
@@ -43,4 +69,10 @@ export class RecoverPage {
 
     await alert.present();
   }
+
+  // Define tu lista de usuarios aquí (debes sincronizarla con la de HomePage)
+  users = [
+    { email: 'joe.medina@duocuc.cl', password: 'contraseña1', name: 'Joel Medina' },
+    { email: 'fab.aguila@duocuc.cl', password: 'contraseña2', name: 'Fabián Águila' },
+  ];
 }

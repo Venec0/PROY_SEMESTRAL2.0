@@ -17,8 +17,14 @@
           <ion-label position="floating">Correo Electrónico</ion-label>
           <ion-input type="email" [(ngModel)]="email"></ion-input>
         </ion-item>
+        <ion-item class="input-field-two" *ngIf="showNewPasswordInput">
+          <ion-label position="floating">Nueva Contraseña</ion-label>
+          <ion-input type="password" [(ngModel)]="newPassword"></ion-input>
+        </ion-item>
       </ion-list>
     </ion-card-content>
-    <ion-button expand="full" shape="round" (click)="resetPassword()">Restablecer Contraseña</ion-button>
+    <ion-button expand="full" shape="round" (click)="resetPassword()">
+      {{ showNewPasswordInput ? 'Cambiar Contraseña' : 'Restablecer Contraseña' }}
+    </ion-button>
   </div>
 </ion-content>

@@ -3,13 +3,29 @@
     <ion-toolbar color="dark">
       <ion-title>
         <ion-img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img>
+        Bienvenido!
       </ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <ion-card *ngIf="welcomeMessage">
+  <div id="welcomeMessage">
+    <ion-card *ngIf="welcomeMessage">
+      <ion-card-content>
+        <ion-card-title>{{ welcomeMessage }}</ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ion-card *ngIf="aulas.length > 0">
     <ion-card-content>
-      <ion-card-title>{{ welcomeMessage }}</ion-card-title>
+      <ion-card-title>Lista de Aulas:</ion-card-title>
+      <ion-list lines="full">
+        <ion-item *ngFor="let aula of aulas">
+          <ion-label>Aula {{ aula.id }}</ion-label>
+          <ion-note slot="end">Código {{ aula.codigo }}</ion-note>
+          <ion-button expand="full" shape="round" color="primary" (click)="mostrarCodigoQR(aula.qrCodeImage)">Ingresar</ion-button>
+        </ion-item>
+      </ion-list>
     </ion-card-content>
   </ion-card>
 </ion-content>
