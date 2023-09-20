@@ -13,7 +13,7 @@ export class HomePage {
 
   users = [
     { email: 'joe.medina@duocuc.cl', password: 'contraseña1', name: 'Joel Medina' },
-    { email: 'fab.aguila@duocuc.cl', password: 'contraseña2', name: 'Fabián Águila' },
+    { email: 'fab.aguila@profesor.duoc.cl', password: 'contraseña2', name: 'Profesor Fabián Águila' },
   ];
 
   constructor(
